@@ -1,0 +1,84 @@
+#Timothy Foster, 4/25/25, MPG Calculator
+
+#Import tkinter as tk to reduce repetition and import tkinter.messagebox.
+import tkinter as tk
+import tkinter.messagebox
+
+#Assign tk to root.
+root = tk.Tk()
+
+#Assign variables to tk string variables.
+miles_var = tk.StringVar()
+gallons_var = tk.StringVar()
+label_MPG = tk.StringVar()
+
+#Define the calculate MPG function.
+def calculate_mpg():
+
+    #Obtain the miles and gallons values.
+    miles = float(miles_var.get())
+    gallons = float(gallons_var.get())
+
+    #Ensure the user input isn't faulty.
+    if gallons == 0 or gallons < 0 or miles == 0 or miles < 0:
+        label_error = tk.Label(root,
+                               text =" You must input two non-zero positive values",
+                               font = ("arial", 20, "normal"))
+        label_error.grid(row = 3, column = 3)
+
+    #Calculate the MPG.
+    MPG = miles / gallons
+
+    #Display the results using a label.
+    label_MPG = tk.Label(root,
+                         text = f"The miles per gallon the car gets is {MPG:.3f}",
+                         textvariable = MPG,
+                         font = ("arial", 15, "normal"))
+    label_MPG.grid(row = 2, column = 2)
+
+#Define the miles and gallons variables.
+miles = miles_var.get()
+miles_var.set(0)
+gallons = gallons_var.get()
+gallons_var.set(0)
+
+#Make the miles label.
+miles_label = tk.Label(root,
+                       text = "Miles the car can drive on a full tank:",
+                       font = ("arial", 15, "normal"))
+miles_label.grid(row = 0, column = 0)
+
+#Make the miles entry widget.
+miles_entry = tk.Entry(root,
+                       textvariable = miles_var,
+                       font = ("arial", 15, "normal"))
+miles_entry.grid(row = 0, column = 1)
+
+#Make the gallons label.
+gallons_label = tk.Label(root,
+                         text = "Gallons of gas the car can hold:",
+                         font = ("arial", 15, "normal"))
+gallons_label.grid(row = 1, column = 0)
+
+#Make the gallons entry widget.
+gallons_entry = tk.Entry(root,
+                         textvariable = gallons_var,
+                         font = ("arial", 15, "normal"))
+gallons_entry.grid(row = 1, column = 1)
+
+#Make the calculate button.
+calculate_btn=tk.Button(root,
+                        text = "Calculate MPG",
+                        command = calculate_mpg)
+calculate_btn.grid(row = 2, column = 0)
+
+#Make the quit button widget.
+quit_button = tkinter.Button(root,
+                             text = "Quit",
+                             command = root.destroy)
+quit_button.grid(row = 5, column = 5)
+
+#Run the main loop.
+root.mainloop()
+
+
