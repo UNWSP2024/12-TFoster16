@@ -1,0 +1,114 @@
+#Timothy Foster, 4/25/25, Automotive Cost GUI Program
+
+#Import tkinter as tk to reduce repetitiveness.
+import tkinter as tk
+
+#Assign root as the tk.
+root = tk.Tk()
+
+#Give the window a title.
+root.title("Joe's Automotive Calculator")
+
+#Define the function for showing the cost of the operations.
+def display_choices():
+
+    #Define the total cost variable.
+    total_cost = 0
+
+    #Add money to the total cost variable based on what operations the user chooses.
+    if(choice1.get() == 1):
+        total_cost += 30
+
+    if(choice2.get() == 1):
+        total_cost += 20
+
+    if(choice3.get() == 1):
+        total_cost += 40
+
+    if(choice4.get() == 1):
+        total_cost += 100
+
+    if choice5.get() == 1:
+        total_cost += 35
+
+    if choice6.get() == 1:
+        total_cost += 200
+
+    if choice7.get() == 1:
+        total_cost += 20
+
+    #Show the results in a label.
+    results = tk.Label(root,
+                       text = f"The total cost of the operations would be ${total_cost}.",
+                       font = ("arial", 15, "normal"))
+
+    #Pack the results.
+    results.pack()
+
+#Define all of the choice variables as tk integer variables.
+choice1 = tk.IntVar()
+choice2 = tk.IntVar()
+choice3 = tk.IntVar()
+choice4 = tk.IntVar()
+choice5 = tk.IntVar()
+choice6 = tk.IntVar()
+choice7 = tk.IntVar()
+
+#Show and pack all of the options.
+o1 = tk.Checkbutton(root,
+                    text = "Oil Change",
+                    variable = choice1,
+                    onvalue = 1,
+                    offvalue = 0,)
+o1.pack()
+
+o2 = tk.Checkbutton(root,
+                    text = "Lube Job",
+                    variable = choice2,
+                    onvalue = 1,
+                    offvalue = 0,)
+o2.pack()
+
+o3 = tk.Checkbutton(root,
+                    text = "Radiator Flush",
+                    variable = choice3,
+                    onvalue = 1,
+                    offvalue = 0,)
+o3.pack()
+
+o4 = tk.Checkbutton(root,
+                    text = "Transmission Fluid",
+                    variable = choice4,
+                    onvalue = 1,
+                    offvalue = 0,)
+o4.pack()
+
+o5 = tk.Checkbutton(root,
+                    text = "Inspection",
+                    variable = choice5,
+                    onvalue = 1,
+                    offvalue = 0,)
+o5.pack()
+
+o6 = tk.Checkbutton(root,
+                    text = "Muffler replacement",
+                    variable = choice6,
+                    onvalue = 1,
+                    offvalue = 0,)
+o6.pack()
+
+o7 = tk.Checkbutton(root,
+                    text = "Tire Rotation",
+                    variable = choice7,
+                    onvalue = 1,
+                    offvalue = 0,)
+o7.pack()
+
+#Create and pack the see total button.
+display_results = tk.Button(root,
+                            text = "See total!",
+                            command = display_choices)
+display_results.pack()
+
+#Run the main loop.
+root.mainloop()
